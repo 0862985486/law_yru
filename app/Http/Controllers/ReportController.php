@@ -78,33 +78,33 @@ class ReportController extends Controller
             //dd("ว่างทั้งคู่");
             $law=DB::table('laws')
             ->join('types', 'types.t_id', '=', 'laws.type')
-            ->where('date_announce', 'like', '%'.$year.'%')
-            ->orderBy('laws.law_id', 'DESC')
+            ->where('date_out', 'like', '%'.$year.'%')
+            ->orderBy('laws.date_out', 'DESC')
             ->get();
         }elseif($request->type!=null && $request->offer==null ){
             //dd("ว่างเสนอ");
             $law=DB::table('laws')
             ->join('types', 'types.t_id', '=', 'laws.type')
-            ->where('date_announce', 'like', '%'.$year.'%')
+            ->where('date_out', 'like', '%'.$year.'%')
             ->where('type','=',$type)
-            ->orderBy('laws.law_id', 'DESC')
+            ->orderBy('laws.date_out', 'DESC')
             ->get();
         }elseif($request->offer!=null && $request->type==null){
             //dd("ว่างประเภท");
             $law=DB::table('laws')
             ->join('types', 'types.t_id', '=', 'laws.type')
-            ->where('date_announce', 'like', '%'.$year.'%')
+            ->where('date_out', 'like', '%'.$year.'%')
             ->where('offer','=',$offer)
-            ->orderBy('laws.law_id', 'DESC')
+            ->orderBy('laws.date_out', 'DESC')
             ->get();
         }else{
             //dd("ไม่ว่าง");
             $law=DB::table('laws')
             ->join('types', 'types.t_id', '=', 'laws.type')
-            ->where('date_announce', 'like', '%'.$year.'%')
+            ->where('date_out', 'like', '%'.$year.'%')
             ->where('type','=',$type)
             ->where('offer','=',$offer)
-            ->orderBy('laws.law_id', 'DESC')
+            ->orderBy('laws.date_out', 'DESC')
             ->get();
         }
 

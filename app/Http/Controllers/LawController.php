@@ -132,7 +132,7 @@ class LawController extends Controller
 
         }
 
-        $law = LAW::find($id);
+        $law = Law::find($id);
         $law->file_law =  $fileNameToStore ?? $law->file_law ;
         $law->offer = $request->get('offer');
         $law->type	 = $request->get('type');

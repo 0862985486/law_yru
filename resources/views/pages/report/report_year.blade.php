@@ -64,7 +64,7 @@ th,td {
           <th title="Field #2">เสนอ</th>
           <th title="Field #3">ประเภท</th>
           <th title="Field #4">เรื่อง</th>
-          <th title="Field #6">วันที่เพยแพร่</th>
+          <th title="Field #6">วันที่ประกาศ</th>
           <th title="Field #7">สถานะ</th>
         </tr>
       </thead>
@@ -75,7 +75,7 @@ th,td {
                     <td >{{$row->offer}}</td>
                     <td >{{$row->name_type}}</td>
                     <td style="text-align: left; width: 700px;">{{$row->law_name}}</td>
-                    <td style="text-align: left; width: 100px;">{{thaidate(' j M Y', $row->date_announce)}}</td>
+                    <td style="text-align: left; width: 100px;">{{thaidate(' j M Y',$row->date_out)}}</td>
                     @if($row->stutas=='1')
                         <td><h4 style="background-color:#66FF66; width: 80px;">เผยแพร่</h4></td>
                     @else()

@@ -21,12 +21,12 @@ class FRontendController extends Controller
         ->whereBetween('stutas', ['1', '2'])
         ->orderBy('created_at', 'desc')
         ->paginate(5);
-        $law=DB::table('laws')
-                ->where('laws.deleted_at','=',null)
-                ->whereBetween('stutas', ['1', '2'])
-                ->orderByDesc('law_id')
-                ->get();
-        return view('pages.frontend.home1',compact('page_title','name','law'));
+        // $law=DB::table('laws')
+        //         ->where('laws.deleted_at','=',null)
+        //         ->whereBetween('stutas', ['1', '2'])
+        //         ->orderByDesc('law_id')
+        //         ->get();
+        return view('pages.frontend.home1',compact('page_title','name',));
     }
 
     public function constitution()

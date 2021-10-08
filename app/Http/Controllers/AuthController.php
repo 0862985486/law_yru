@@ -32,35 +32,20 @@ class AuthController extends Controller
 
             $token = json_decode((string)$response->getBody(), true);
 
-            if($user = $this->createOrUpdateUser($token)) {
-                if($user->status=='1'){
-                    if (Auth::loginUsingId($user->id)){
-                        $user_id=$user->id;
-                        $user_name=$user->name;
-                        $request->session()->put('id', $user_id);
-                        $request->session()->put('name', $user_name);
-                        return Redirect('/law');
-                    }
-                }elseif($user->status=='2'){
+            if($user = $this->createOrUpdateUser($token))
+            {
+
                     if (Auth::loginUsingId($user->id)) {
                         $user_id=$user->id;
                         $user_name=$user->name;
+                        $stutas=$user->status;
                         $request->session()->put('id', $user_id);
                         $request->session()->put('name', $user_name);
-                        //dd(session('id'));
-                        //dd(session('name'));
-                        return Redirect('/lawyer');
-                    }
-                }else{
-                    if (Auth::loginUsingId($user->id)) {
-                        $user_id=$user->id;
-                        $user_name=$user->name;
-                        $request->session()->put('id', $user_id);
-                        $request->session()->put('name', $user_name);
+                        $request->session()->put('stutas', $stutas);
                         return Redirect('');
                     }
-                }
             }
+
         }
 
         echo 'เข้าสู่ระบบล้มเหลว!';

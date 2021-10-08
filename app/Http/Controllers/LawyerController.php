@@ -21,8 +21,10 @@ class LawyerController extends Controller
         $page_title = 'กฎหมาย';
         $user_id=session('id');
         $law=DB::table('laws')
+        ->where('laws.deleted_at','=',null)
         ->join('types', 'types.t_id', '=', 'laws.type')
         ->join('stutas', 'stutas.id', '=', 'laws.stutas')
+
         ->where('user_id','=',$user_id)
         ->get();
         return view('pages.lawyer.law.index', compact('page_title','law'));
@@ -73,7 +75,7 @@ class LawyerController extends Controller
         $requestData['date_announce'] = Carbon::now();
         $requestData['user_id']=session('id');
 
-        LAW::create($requestData);
+        Law::create($requestData);
         return redirect()->route('lawyer.index')->with('success', 'เพิ่มข้อมูลเรียบร้อย');
     }
 
@@ -106,7 +108,7 @@ class LawyerController extends Controller
     public function edit($id)
     {
         $page_title = 'กฎหมาย';
-        $law=Law::find($id);
+        $law = Law::find($id);
         $name = Law::all();
         $type = Type::all();
         return view('pages.lawyer.law.edit', compact('page_title','law','name','type'));
@@ -139,7 +141,7 @@ class LawyerController extends Controller
 
         }
 
-        $law = LAW::find($id);
+        $law = Law::find($id);
         $law->file_law =  $fileNameToStore ?? $law->file_law ;
         $law->offer = $request->get('offer');
         $law->type	 = $request->get('type');
@@ -161,6 +163,8 @@ class LawyerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $law=Law::find($id);
+        $law->delete();
+        return redirect()->route('lawyer.index')->with('success','ลบข้อมูลเรียบร้อย');
     }
 }

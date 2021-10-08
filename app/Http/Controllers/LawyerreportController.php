@@ -199,6 +199,6 @@ class LawyerreportController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

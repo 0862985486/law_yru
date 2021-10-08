@@ -35,8 +35,8 @@ class LawExport implements WithHeadings,WithMapping,FromCollection
             $law=DB::table('laws')
             ->join('types', 'types.t_id', '=', 'laws.type')
             ->join('stutas', 'stutas.id', '=', 'laws.stutas')
-            ->where('date_announce', 'like', '%'.$this->year.'%')
-            ->orderBy('laws.law_id', 'DESC')
+            ->where('date_out', 'like', '%'.$this->year.'%')
+            ->orderBy('laws.date_out', 'DESC')
             ->get();
             return $law;
         }elseif($this->type!=null && $this->offer==null ){
@@ -44,9 +44,9 @@ class LawExport implements WithHeadings,WithMapping,FromCollection
             $law=DB::table('laws')
             ->join('types', 'types.t_id', '=', 'laws.type')
             ->join('stutas', 'stutas.id', '=', 'laws.stutas')
-            ->where('date_announce', 'like', '%'.$this->year.'%')
+            ->where('date_out', 'like', '%'.$this->year.'%')
             ->where('type','=',$this->type)
-            ->orderBy('laws.law_id', 'DESC')
+            ->orderBy('laws.date_out', 'DESC')
             ->get();
             return $law;
         }elseif($this->offer!=null && $this->type==null){
@@ -54,9 +54,9 @@ class LawExport implements WithHeadings,WithMapping,FromCollection
             $law=DB::table('laws')
             ->join('types', 'types.t_id', '=', 'laws.type')
             ->join('stutas', 'stutas.id', '=', 'laws.stutas')
-            ->where('date_announce', 'like', '%'.$this->year.'%')
+            ->where('date_out', 'like', '%'.$this->year.'%')
             ->where('offer','=',$this->offer)
-            ->orderBy('laws.law_id', 'DESC')
+            ->orderBy('laws.date_out', 'DESC')
             ->get();
             return $law;
         }else{
@@ -64,10 +64,10 @@ class LawExport implements WithHeadings,WithMapping,FromCollection
             $law=DB::table('laws')
             ->join('types', 'types.t_id', '=', 'laws.type')
             ->join('stutas', 'stutas.id', '=', 'laws.stutas')
-            ->where('date_announce', 'like', '%'.$this->year.'%')
+            ->where('date_out', 'like', '%'.$this->year.'%')
             ->where('type','=',$this->type)
             ->where('offer','=',$this->offer)
-            ->orderBy('laws.law_id', 'DESC')
+            ->orderBy('laws.date_out', 'DESC')
             ->get();
             return $law;
         }
@@ -80,7 +80,7 @@ class LawExport implements WithHeadings,WithMapping,FromCollection
             $law->offer,
             $law->name_type,
             $law->law_name,
-            thaidate(' j M Y', $law->date_announce),
+            thaidate(' j M Y', $law->date_out),
             $law->t_name,
         ];
 
@@ -92,7 +92,7 @@ class LawExport implements WithHeadings,WithMapping,FromCollection
             'เสนอ',
             'ประเภท',
             'เรื่อง',
-            'วันที่เพยแพร',
+            'วันที่ประกาศ',
             'สถานะ'
         ];
     }

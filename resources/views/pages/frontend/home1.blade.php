@@ -1,5 +1,9 @@
 @extends('pages.frontend.home')
 
+<?php
+use Illuminate\Support\Facades\DB;
+?>
+
 {{-- Content --}}
 @section('content')
 <div class="row">
@@ -11,20 +15,27 @@
                                 @if($row1->name_id==$row1->name_id)
                                 <td>
                                     <div  style="width:1000px; word-wrap: break-word;" class="pointer">
-                                        <a onclick="myFunction{{$key}}()" style="color:blue"><i class="fa fa-folder" style="font-size:20px"></i>{{$row1->name_id}}</a>
+                                        <h6 style="color:blue">{{$row1->name_id}}</h6>
                                     </div>
                                     <table class="table" id="form1" >
-                                        <tbody id="contenrif{{$key}}">
-                                            @foreach ($law as $row)
+                                        <tbody>
+                                            <?php
+                                                $law1=DB::table('laws')
+                                                ->where('laws.deleted_at','=',null)
+                                                ->where('laws.name_id','=',$row1->name_id)
+                                                ->whereBetween('stutas', ['1', '2'])
+                                                ->orderByDesc('date_out')
+                                                ->get();
+                                            ?>
+                                            @foreach ($law1 as $row)
                                                 @if($row1->name_id==$row->name_id)
                                                     @if($row->stutas==1)
                                                     <tr>
-                                                        <td style="padding-left:5%; width:910px; color:#778899;"><a style="color:black;" target ="_blank" href="{{asset('@laravel/storage/app/public/law/'.$row->file_law)}}">{{$row->law_name}}</a>(ประกาศใช้ เมื่อ{{thaidate(' j F Y', $row->created_at)}})</td>
-
+                                                        <td style="padding-left:5%; width:910px; color:#778899;"><a style="color:black;" target ="_blank" href="{{asset('@laravel/storage/app/public/law/'.$row->file_law)}}">{{$row->law_name}}</a>(ประกาศใช้ เมื่อ{{thaidate(' j F Y', $row->date_out)}})</td>
                                                     </tr>
                                                     @else
                                                     <tr>
-                                                        <td style="color:red; padding-left:5%; width:910px;"><a style="color:black;" target ="_blank" href="{{asset('@laravel/storage/app/public/law/'.$row->file_law)}}">{{$row->law_name}}</a>(ยกเลิก เมื่อ{{thaidate(' j F Y', $row->updated_at)}})</td>
+                                                        <td style="color:red; padding-left:5%; width:910px;"><a style="color:black;" target ="_blank" href="{{asset('@laravel/storage/app/public/law/'.$row->file_law)}}">{{$row->law_name}}</a>  (ยกเลิก เมื่อ{{thaidate(' j F Y', $row->date_out)}})</td>
                                                     </tr>
                                                     @endif
                                                 @endif
@@ -34,19 +45,6 @@
                                     </td>
                                 @endif
                             </tr>
-
-                    <script>
-                        document.getElementById("contenrif{{$key}}").style.display = "none";
-                        function myFunction{{$key}}(){
-                            var x = document.getElementById('contenrif{{$key}}');
-                            if (x.style.display === 'none') {
-                                x.style.display = 'block';
-                            } else {
-                                x.style.display = 'none';
-                            }
-                        }
-
-                    </script>
                     @endforeach
                 </tbody>
             </table>
