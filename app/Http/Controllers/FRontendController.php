@@ -12,21 +12,23 @@ class FRontendController extends Controller
     public function home1()
     {
 
+
+
         $page_title = 'กฎหมาย';
         $name=DB::table('laws')
-        ->select('name_id',DB::raw('max(law_id) as created_at'))
-        ->orderBy('created_at', 'desc')
-        ->groupBy('name_id')
+        ->select('name_id',DB::raw('max(date_out) as date_out'))
+        ->orderBy('date_out', 'desc')
         ->where('laws.deleted_at','=',null)
         ->whereBetween('stutas', ['1', '2'])
-        ->orderBy('created_at', 'desc')
+        ->groupBy('name_id')
         ->paginate(5);
-        // $law=DB::table('laws')
-        //         ->where('laws.deleted_at','=',null)
-        //         ->whereBetween('stutas', ['1', '2'])
-        //         ->orderByDesc('law_id')
-        //         ->get();
-        return view('pages.frontend.home1',compact('page_title','name',));
+        $law=DB::table('laws')
+                ->where('laws.deleted_at','=',null)
+                ->whereBetween('stutas', ['1', '2'])
+                ->orderByDesc('laws.law_id')
+                ->get();
+
+        return view('pages.frontend.home1',compact('page_title','name','law'));
     }
 
     public function constitution()
@@ -34,11 +36,11 @@ class FRontendController extends Controller
 
         $page_title = 'รัฐธรรมนูญ';
         $name=DB::table('laws')
-        ->select('name_id',DB::raw('max(law_id) as created_at'))
+        ->select('name_id',DB::raw('max(date_out) as date_out'))
+        ->orderBy('date_out', 'desc')
         ->where('type','=','2')
         ->where('laws.deleted_at','=',null)
         ->whereBetween('stutas', ['1', '2'])
-        ->orderBy('created_at', 'desc')
         ->groupBy('name_id')
         ->paginate(5);
         $law=DB::table('laws')
@@ -56,13 +58,14 @@ class FRontendController extends Controller
     {
         $page_title = 'พระราชบัญญัติ';
         $name=DB::table('laws')
-            ->select('name_id',DB::raw('max(law_id) as created_at'))
-            ->where('type','=','3')
-            ->where('laws.deleted_at','=',null)
-            ->orderBy('created_at', 'desc')
-            ->whereBetween('stutas', ['1', '2'])
-            ->groupBy('name_id')
-            ->paginate(5);
+        ->select('name_id',DB::raw('max(date_out) as date_out'))
+        ->orderBy('date_out', 'desc')
+        ->where('type','=','3')
+        ->where('laws.deleted_at','=',null)
+        ->whereBetween('stutas', ['1', '2'])
+        ->groupBy('name_id')
+        ->paginate(5);
+
         $law=DB::table('laws')
                 ->where('stutas','=','1')
                 ->where('type','=','3')
@@ -78,13 +81,14 @@ class FRontendController extends Controller
     {
         $page_title = 'พระราชกำหนด';
         $name=DB::table('laws')
-        ->select('name_id',DB::raw('max(law_id) as created_at'))
+        ->select('name_id',DB::raw('max(date_out) as date_out'))
+        ->orderBy('date_out', 'desc')
         ->where('type','=','4')
         ->where('laws.deleted_at','=',null)
-        ->orderBy('created_at', 'desc')
         ->whereBetween('stutas', ['1', '2'])
         ->groupBy('name_id')
         ->paginate(5);
+
         $law=DB::table('laws')
                 ->where('stutas','=','1')
                 ->where('type','=','4')
@@ -99,13 +103,14 @@ class FRontendController extends Controller
     {
         $page_title = 'พระราชกฤษฎีกา';
         $name=DB::table('laws')
-        ->select('name_id',DB::raw('max(law_id) as created_at'))
+        ->select('name_id',DB::raw('max(date_out) as date_out'))
+        ->orderBy('date_out', 'desc')
         ->where('type','=','5')
         ->where('laws.deleted_at','=',null)
         ->whereBetween('stutas', ['1', '2'])
-        ->orderBy('created_at', 'desc')
         ->groupBy('name_id')
         ->paginate(5);
+
         $law=DB::table('laws')
                 ->where('stutas','=','1')
                 ->where('type','=','5')
@@ -120,13 +125,14 @@ class FRontendController extends Controller
     {
         $page_title = 'กฎกระทรวง';
         $name=DB::table('laws')
-        ->select('name_id',DB::raw('max(law_id) as created_at'))
+        ->select('name_id',DB::raw('max(date_out) as date_out'))
+        ->orderBy('date_out', 'desc')
         ->where('type','=','6')
         ->where('laws.deleted_at','=',null)
         ->whereBetween('stutas', ['1', '2'])
-        ->orderBy('created_at', 'desc')
         ->groupBy('name_id')
         ->paginate(5);
+
         $law=DB::table('laws')
                 ->where('stutas','=','1')
                 ->where('type','=','6')
@@ -141,13 +147,14 @@ class FRontendController extends Controller
     {
         $page_title = 'ระเบียบ';
         $name=DB::table('laws')
-        ->select('name_id',DB::raw('max(law_id) as created_at'))
+        ->select('name_id',DB::raw('max(date_out) as date_out'))
+        ->orderBy('date_out', 'desc')
         ->where('type','=','7')
         ->where('laws.deleted_at','=',null)
-        ->orderBy('created_at', 'desc')
         ->whereBetween('stutas', ['1', '2'])
         ->groupBy('name_id')
         ->paginate(5);
+
         $law=DB::table('laws')
                 ->where('stutas','=','1')
                 ->where('type','=','7')
@@ -163,13 +170,14 @@ class FRontendController extends Controller
     {
         $page_title = 'ข้อบังคับ';
         $name=DB::table('laws')
-        ->select('name_id',DB::raw('max(law_id) as created_at'))
+        ->select('name_id',DB::raw('max(date_out) as date_out'))
+        ->orderBy('date_out', 'desc')
         ->where('type','=','8')
         ->where('laws.deleted_at','=',null)
         ->whereBetween('stutas', ['1', '2'])
-        ->orderBy('created_at', 'desc')
         ->groupBy('name_id')
         ->paginate(5);
+
         $law=DB::table('laws')
                 ->where('stutas','=','1')
                 ->where('type','=','8')
@@ -184,13 +192,14 @@ class FRontendController extends Controller
     {
         $page_title = 'ประกาศ';
         $name=DB::table('laws')
-        ->select('name_id',DB::raw('max(law_id) as created_at'))
+        ->select('name_id',DB::raw('max(date_out) as date_out'))
+        ->orderBy('date_out', 'desc')
         ->where('type','=','9')
         ->where('laws.deleted_at','=',null)
         ->whereBetween('stutas', ['1', '2'])
-        ->orderBy('created_at', 'desc')
         ->groupBy('name_id')
         ->paginate(5);
+
         $law=DB::table('laws')
                 ->where('stutas','=','1')
                 ->where('type','=','9')
@@ -205,13 +214,14 @@ class FRontendController extends Controller
     {
         $page_title = 'คำสั่ง';
         $name=DB::table('laws')
-        ->select('name_id',DB::raw('max(law_id) as created_at'))
+        ->select('name_id',DB::raw('max(date_out) as date_out'))
+        ->orderBy('date_out', 'desc')
         ->where('type','=','1')
         ->where('laws.deleted_at','=',null)
         ->whereBetween('stutas', ['1', '2'])
-        ->orderBy('created_at', 'desc')
         ->groupBy('name_id')
         ->paginate(5);
+
         $law=DB::table('laws')
                 ->where('stutas','=','1')
                 ->where('type','=','1')

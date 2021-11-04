@@ -15,14 +15,6 @@
                     </div><br>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                     <input type="text" class="form-control" placeholder="ค้นหา..."  name="search" id='search' />
-                        <span>
-                            <i class="flaticon2-search-1 text-muted"></i>
-                        </span><bR>
-                </div>
-            </div>
             @yield('content')
         </div>
     </div>

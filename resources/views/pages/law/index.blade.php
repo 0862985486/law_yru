@@ -96,7 +96,7 @@
                     @if($row->stutas=='1')
                         <td><h4 style="background-color:#66FF66; width: 80px;">เผยแพร่</h4></td>
                     @else()
-                        <td ><h4 style="background-color:#FF3300;width: 80px; ">ยกเลิก</h4></td>
+                        <td><h4 style="background-color:#FF3300;width: 80px; ">ยกเลิก</h4></td>
                     @endif
                     <td>
                     <div style="display:flex; flex-direction: row;">

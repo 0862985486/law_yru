@@ -4,10 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\LAW;
-use App\Name;
-use App\Type;
-
 
 class LiveSearch extends Controller
 {
@@ -25,20 +21,19 @@ class LiveSearch extends Controller
       if($query != '')
       {
        $data = DB::table('laws')
-        ->select('name_id')
-        ->where('name_id', 'like', '%'.$query.'%')
-        ->groupBy('name_id')
-        ->get();
+         ->where('name_id', 'like', '%'.$query.'%')
+
+         ->get();
+
       }
       else
       {
-       $data[1] = DB::table('laws')
-         ->orderBy('id', 'desc')
-         ->get();
-
-        $data[2] = DB::table('laws')
-         ->orderBy('id', 'desc')
-         ->get();
+       $data = DB::table('laws')
+       ->join('types', 'types.t_id', '=', 'laws.type')
+       ->where('laws.deleted_at','=',null)
+       ->whereBetween('stutas', ['1', '2'])
+       ->orderBy('law_id', 'desc')
+       ->get();
       }
       $total_row = $data->count();
       if($total_row > 0)
@@ -47,20 +42,9 @@ class LiveSearch extends Controller
        {
         $output .= '
         <tr>
-
-                <td>
-                    <div style="width:1100px; word-wrap: break-word; height:40px;" class="pointer">
-                        <a onclick="myFunction{{$key}}()" style="color:blue"><i class="fa fa-folder" style="font-size:20px"></i>'.$row->name_id.'</a>
-                    </div>
-                    <table class="table" id="form1" >
-                        <tbody id="contenrif{{$key}}">
-                                    <tr>
-                                        <td style="padding-left:5%; width:92%">'.$row->name.'</td>
-                                    </tr>
-                        </tbody>
-                    </table>
-                </td>
-
+            <td style="width:1000px; word-wrap: break-word;" class="pointer">
+            <h6 style="color:blue">'.$row->name_id.'</h6>
+            </td>
         </tr>
         ';
        }
@@ -82,4 +66,3 @@ class LiveSearch extends Controller
      }
     }
 }
-

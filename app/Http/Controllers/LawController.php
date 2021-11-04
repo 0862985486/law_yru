@@ -24,7 +24,7 @@ class LawController extends Controller
         ->join('types', 'types.t_id', '=', 'laws.type')
         ->where('laws.deleted_at','=',null)
         ->whereBetween('stutas', ['1', '2'])
-        ->orderBy('law_id', 'desc')
+        ->orderBy('laws.date_out', 'desc')
         ->get();
         return view('pages.law.index', compact('page_title','law'));
     }

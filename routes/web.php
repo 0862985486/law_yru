@@ -57,7 +57,7 @@ Route::get('/rules','FRontendController@rules');
 Route::get('/declare','FRontendController@declare');
 Route::get('/dictation','FRontendController@dictation');
 Route::get('/live_search', 'LiveSearch@index');
-Route::get('/live_search/action', 'LiveSearch@action')->name('live_search.action');
+Route::get('/search', 'LiveSearch@action')->name('live_search.action');
 Route::get('/lawyer', function(){
     return View('pages.lawyer.index');
  });
@@ -84,5 +84,8 @@ Route::get('/draft','LawyerController@create');
 
 Route::get('auth/callback', 'AuthController@callbackYRUPassport')->name('auth.callbackYRUPassport');
 Route::get('auth/logout', 'AuthController@logout')->name('auth.logout');
+
+
+
 
 

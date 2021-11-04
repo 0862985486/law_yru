@@ -1,38 +1,18 @@
         <div class="col-md-3">
-            <table class="table table-bordered">
-                <tbody>
 
-                    <tr>
-                        <td style="background-color:DodgerBlue;"><a style="color:white; font-size:20px;" href="/">กฎหมาย</a></td>
-                    <tr>
-                    <tr>
-                        <td class="dropdown-item"><a style="color:black; font-size:17px;" href="/constitution">รัฐธรรมนูญ</a></td>
-                    <tr>
-                    <tr>
-                        <td class="dropdown-item"><a style="color:black; font-size:17px;" href="/enactment">พระราชบัญญัติ</a></td>
-                    <tr>
-                    <tr>
-                        <td class="dropdown-item"><a style="color:black; font-size:17px;" href="/royal_enactment">พระราชกำหนด</a></td>
-                    <tr>
-                    <tr>
-                        <td class="dropdown-item"><a style="color:black; font-size:17px;" href="/decree">พระราชกฤษฎีกา</a></td>
-                    <tr>
-                    <tr>
-                        <td class="dropdown-item"><a style="color:black; font-size:17px;" href="/ministry">กฎกระทรวง</a></td>
-                    <tr>
-                    <tr>
-                        <td class="dropdown-item"><a style="color:black; font-size:17px;" href="/regularity">ระเบียบ</a></td>
-                    <tr>
-                    <tr>
-                        <td class="dropdown-item"><a style="color:black; font-size:17px;" href="/rules">ข้อบังคับ</a></td>
-                    <tr>
-                    <tr>
-                        <td class="dropdown-item"><a style="color:black; font-size:17px;" href="/declare">ประกาศ</a></td>
-                    <tr>
-                    <tr>
-                        <td class="dropdown-item"><a style="color:black; font-size:17px;" href="/dictation">คำสั่ง</a></td>
-                    <tr>
+            <div class="border-end bg-white" id="sidebar-wrapper">
+                    <div class="list-group list-group-flush">
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" style="color:black; font-size:17px; background-color:DodgerBlue;" href="/">กฎหมาย</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" style="color:black; font-size:17px;" href="/constitution">รัฐธรรมนูญ</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" style="color:black; font-size:17px;" href="/enactment">พระราชบัญญัติ</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" style="color:black; font-size:17px;" href="/royal_enactment">พระราชกำหนด</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" style="color:black; font-size:17px;" href="/decree">พระราชกฤษฎีกา</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" style="color:black; font-size:17px;" href="/ministry">กฎกระทรวง</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" style="color:black; font-size:17px;" href="/regularity">ระเบียบ</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" style="color:black; font-size:17px;" href="/rules">ข้อบังคับ</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" style="color:black; font-size:17px;" href="/declare">ประกาศ</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" style="color:black; font-size:17px;" href="/dictation">คำสั่ง</a>
+                    </div>
+            </div>
 
-                </tbody>
-            </table>
         </div>
