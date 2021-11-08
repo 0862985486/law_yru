@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\DB;
                                         ->where('laws.name_id','=',$row1->name_id)
                                         ->whereBetween('stutas', ['1', '2'])
                                         ->orderByDesc('date_out')
-                                        ->paginate(2);
+                                        ->paginate(2,['*'],"law_page_{$key}");
                                     ?>
                                     <table class="table" id="form1" >
                                         <tbody>
@@ -59,7 +59,7 @@ use Illuminate\Support\Facades\DB;
                                             @endforeach
                                         </tbody>
                                     </table>
-                                    {{$law1->links()}}
+                                    {{$law1->appends(request()->all())->links()}}
                                     </td>
                                 @endif
                             </tr>
@@ -69,7 +69,7 @@ use Illuminate\Support\Facades\DB;
     </div>
 </div>
 <div style="padding-left:90%;">
-    <div>{{$name->links()}}</div>
+    <div>{{$name->appends(request()->all())->links()}}</div>
 </div>
 
 

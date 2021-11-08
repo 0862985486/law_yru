@@ -9,10 +9,8 @@ use Illuminate\Http\Request;
 
 class FRontendController extends Controller
 {
-    public function home1()
+    public function home1(Request $request)
     {
-
-
 
         $page_title = 'กฎหมาย';
         $name=DB::table('laws')
@@ -21,8 +19,8 @@ class FRontendController extends Controller
         ->where('laws.deleted_at','=',null)
         ->whereBetween('stutas', ['1', '2'])
         ->groupBy('name_id')
-        ->paginate(5);
-        $law=DB::table('laws')
+        ->paginate(5,['*'],'name_page');
+                $law=DB::table('laws')
                 ->where('laws.deleted_at','=',null)
                 ->whereBetween('stutas', ['1', '2'])
                 ->orderByDesc('laws.law_id')
@@ -31,7 +29,7 @@ class FRontendController extends Controller
         return view('pages.frontend.home1',compact('page_title','name','law'));
     }
 
-    public function constitution()
+    public function constitution(Request $request)
     {
 
         $page_title = 'รัฐธรรมนูญ';
@@ -54,7 +52,7 @@ class FRontendController extends Controller
         return view('pages.frontend.home1',compact('page_title','name','law'));
     }
 
-    public function enactment()
+    public function enactment(Request $request)
     {
         $page_title = 'พระราชบัญญัติ';
         $name=DB::table('laws')
@@ -77,7 +75,7 @@ class FRontendController extends Controller
         return view('pages.frontend.home1',compact('page_title','name','law'));
     }
 
-    public function royal_enactment()
+    public function royal_enactment(Request $request)
     {
         $page_title = 'พระราชกำหนด';
         $name=DB::table('laws')
@@ -99,7 +97,7 @@ class FRontendController extends Controller
         return view('pages.frontend.home1',compact('page_title','name','law'));
     }
 
-    public function decree()
+    public function decree(Request $request)
     {
         $page_title = 'พระราชกฤษฎีกา';
         $name=DB::table('laws')
@@ -121,7 +119,7 @@ class FRontendController extends Controller
         return view('pages.frontend.home1',compact('page_title','name','law'));
     }
 
-    public function ministry()
+    public function ministry(Request $request)
     {
         $page_title = 'กฎกระทรวง';
         $name=DB::table('laws')
@@ -143,7 +141,7 @@ class FRontendController extends Controller
         return view('pages.frontend.home1',compact('page_title','name','law'));
     }
 
-    public function regularity()
+    public function regularity(Request $request)
     {
         $page_title = 'ระเบียบ';
         $name=DB::table('laws')
@@ -166,7 +164,7 @@ class FRontendController extends Controller
         return view('pages.frontend.home1',compact('page_title','name','law'));
     }
 
-    public function rules()
+    public function rules(Request $request)
     {
         $page_title = 'ข้อบังคับ';
         $name=DB::table('laws')
@@ -188,7 +186,7 @@ class FRontendController extends Controller
         return view('pages.frontend.home1',compact('page_title','name','law'));
     }
 
-    public function declare()
+    public function declare(Request $request)
     {
         $page_title = 'ประกาศ';
         $name=DB::table('laws')
@@ -210,7 +208,7 @@ class FRontendController extends Controller
         return view('pages.frontend.home1',compact('page_title','name','law'));
     }
 
-    public function dictation()
+    public function dictation(Request $request)
     {
         $page_title = 'คำสั่ง';
         $name=DB::table('laws')
