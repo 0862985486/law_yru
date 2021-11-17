@@ -1,114 +1,53 @@
 <!DOCTYPE html>
 <html>
-@include('pages.frontend.layout.head')
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    #topheader .navbar-nav li > a {
+	text-transform: capitalize;
+	color: #333;
+	transition: background-color .2s, color .2s;
+
+	&:hover,
+	&:focus {
+		background-color: #333;
+		color: #fff;
+	}
+}
+
+#topheader .navbar-nav li.active > a {
+	background-color: #333;
+	color: #fff;
+}
+</style>
+</head>
 <body>
-@include('pages.frontend.layout.header')
 
-<div class="container my-5">
-    <div class="row">
-        @include('pages.frontend.layout.aside')
-        <div class="col-md-9">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="mu-title">
-                        <h2>{{$page_title}}</h2>
-                    </div><br>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                     <input type="text" class="form-control" placeholder="ค้นหา..."  name="search" id='search' />
-                        <span>
-                            <i class="flaticon2-search-1 text-muted"></i>
-                        </span><bR>
-                </div>
-            </div>
-            <div class="row">
-    <div class="col-md-12">
-        <table class="table" id="example">
-            <tbody>
-                 @foreach ($name as $key => $row1)
-                        <tr class='content'>
-                            @if($row1->name_id==$row1->name_id)
-                            <td>
-                                <div  style="width:1100px; word-wrap: break-word; height:40px;" class="pointer">
-                                    <a onclick="myFunction{{$key}}()" style="color:blue"><i class="fa fa-folder" style="font-size:20px"></i>{{$row1->name_id}}</a>
-                                </div>
-                                <table class="table" id="form1" >
-                                    <tbody id="contenrif{{$key}}">
-                                        @foreach ($law as $row)
-                                            @if($row1->name_id==$row->name_id)
-                                                <tr>
-                                                    <td style="padding-left:5%; width:92%">{{$row->name}}</td>
-                                                    <td><a style="color:blue; font-size:15px;"   target ="_blank" href="{{asset('storage/law/'.$row->file_law)}}">ดูเพิ่มเติม</a></td>
-                                                </tr>
-                                            @endif
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </td>
-                            @endif
-                        </tr>
-
-                <script>
-                    document.getElementById("contenrif{{$key}}").style.display = "none";
-                    function myFunction{{$key}}(){
-                        var x = document.getElementById('contenrif{{$key}}');
-                        if (x.style.display === 'none') {
-                            x.style.display = 'block';
-                        } else {
-                            x.style.display = 'none';
-                        }
-                    }
-
-                </script>
-                 @endforeach
-            </tbody>
-        </table>
-    </div>
+<div id="topheader">
+  <nav class="navbar navbar-default">
+		<div class="container-fluid">
+			 <div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+				  </button>
+				  <a class="navbar-brand" href="#">Brand</a>
+			 </div>
+			 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				  <ul class="nav navbar-nav">
+						<li class="active"><a href="#home">home<span class="sr-only">(current)</span></a></li>
+						<li><a href="#page1">page 1</a></li>
+						<li><a href="#page2">page 2</a></li>
+						<li><a href="#page3">page 3</a></li>
+				  </ul>
+				  <ul class="nav navbar-nav navbar-right">
+						<li><a href="#">Link</a></li>
+				  </ul>
+			 </div>
+		</div>
+  </nav>
 </div>
-        </div>
-    </div>
-</div>
-
-@yield('scripts')
-
-
-
-<br><br><br><br><br><br><br><br><br>
-
-@include('pages.frontend.layout.footer')
-
-
-
-</div>
-
 </body>
 </html>
-
-<script>
-$(document).ready(function() {
-    $('#example').DataTable();
-} );
-
-$(document).ready(function(){
- $('#search').keyup(function(){
-
-  // Search text
-  var text = $(this).val();
-
-  // Hide all content class element
-  $('.content').hide();
-
-  // Search and show
-  $('.content:contains("'+text+'")').show();
-
- });
-});
-
-$(document).ready(function() {
-    $('#example').DataTable( {
-        "pagingType": "full_numbers"
-    } );
-} );
-</script>

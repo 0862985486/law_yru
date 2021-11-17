@@ -15,7 +15,7 @@ class Law extends Model
 
     protected $table    = 'laws';
     protected $primaryKey = 'law_id';
-    protected $fillable = ['law_id','user_id','offer', 'type','name_id','law_name','year','file_law','date_out','date_announce','stutas','comment'];
+    protected $fillable = ['law_id','user_id','user_id_check','offer', 'type','name_id','law_name','year','file_law','date_out','date_announce','stutas','comment'];
 
 
 

@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\DB;
                 <tbody>
                     @foreach ($name as $key => $row1)
                             <tr class='content'>
-                                @if($row1->name_id==$row1->name_id)
+
                                 <td>
                                     <div  style="width:1000px; word-wrap: break-word;" class="pointer">
                                         <h6 style="color:blue">{{$row1->name_id}}</h6>
@@ -32,7 +32,8 @@ use Illuminate\Support\Facades\DB;
                                         ->where('laws.name_id','=',$row1->name_id)
                                         ->whereBetween('stutas', ['1', '2'])
                                         ->orderByDesc('date_out')
-                                        ->paginate(2,['*'],"law_page_{$key}");
+                                        ->paginate(5,['*'],"law_page_{$key}");
+
                                     ?>
                                     <table class="table" id="form1" >
                                         <tbody>
@@ -60,8 +61,7 @@ use Illuminate\Support\Facades\DB;
                                         </tbody>
                                     </table>
                                     {{$law1->appends(request()->all())->links()}}
-                                    </td>
-                                @endif
+                                </td>
                             </tr>
                     @endforeach
                 </tbody>
@@ -69,7 +69,7 @@ use Illuminate\Support\Facades\DB;
     </div>
 </div>
 <div style="padding-left:90%;">
-    <div>{{$name->appends(request()->all())->links()}}</div>
+    <div>{{$name->links()}}</div>
 </div>
 
 

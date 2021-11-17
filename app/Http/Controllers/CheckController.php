@@ -61,8 +61,10 @@ class CheckController extends Controller
      */
     public function show($id)
     {
+        $user_id=session('id');
         $law  = Law::find($id);
         $law->stutas = "1";
+        $law->user_id_check=$user_id;
         $law->save();
         return redirect()->route('law.index')->with('success', 'อัพเดตสถานะเรียบร้อย');
 
@@ -98,8 +100,10 @@ class CheckController extends Controller
     public function update(Request $request, $id)
     {
         $law  = Law::find($id);
+        $user_id=session('id');
         $law->stutas = "4";
         $law->comment = $request->comment;
+        $law->user_id_check=$user_id;
         $law->save();
         return redirect()->route('law.index')->with('success', 'อัพเดตสถานะเรียบร้อย');
     }

@@ -1,27 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Laravel 6 Ajax Pagination Example - Nicesnippets.com</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-</head>
+@extends('pages.frontend.home')
 
-<body class="bg-dark">
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <input type="text" id="search" >
-            <div class="card mt-5">
-                <div class="card-header">
-                    <h5>Laravel 6 Ajax Pagination Example - Nicesnippets.com</h5>
-                </div>
-                <div class="card-body" id="tag_container">
-                   @include('presult')
-                </div>
+{{-- Content --}}
+@section('content')
+
+    <input type="text"  class="form-control"  placeholder="ค้นหา..."  id="search" >
+
+            <div class="card-body" id="tag_container">
+                   @include('pages.frontend.presult')
             </div>
-        </div>
-    </div>
-</div>
+
+@endsection
+
+@section('scripts')
 <script type="text/javascript">
     $(window).on('hashchange', function() {
         if (window.location.hash) {
@@ -75,7 +65,17 @@
               alert('No response from server');
         });
     }
+
+
+    $("#Search").on("keyup", function () {
+        val = $(this).val().toLowerCase();
+        $('tr').each(function () {
+            $(this).toggle($(this).text().toLowerCase().includes(val));
+        });
+    });
+
 </script>
 
-</body>
-</html>
+@endsection
+
+

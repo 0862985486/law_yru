@@ -22,11 +22,13 @@ class LawyerController extends Controller
         $user_id=session('id');
         $law=DB::table('laws')
         ->where('laws.deleted_at','=',null)
+        ->join('users','users.id','=','laws.user_id_check')
         ->join('types', 'types.t_id', '=', 'laws.type')
         ->join('stutas', 'stutas.id', '=', 'laws.stutas')
-
         ->where('user_id','=',$user_id)
         ->get();
+
+
         return view('pages.lawyer.law.index', compact('page_title','law'));
     }
 
@@ -51,6 +53,7 @@ class LawyerController extends Controller
      */
     public function store(Request $request)
     {
+        $user_id=session('id');
         //dd($request->date_out);
         if ($request->hasFile('file_law')) {
             $filenameWithExt = $request->file('file_law')->getClientOriginalName ();
@@ -71,6 +74,7 @@ class LawyerController extends Controller
 
         $requestData = $request->all();
         $requestData['stutas']= "3";
+        $requestData['user_id']=$user_id;
         $requestData['file_law'] = $fileNameToStore;
         $requestData['date_announce'] = Carbon::now();
         $requestData['user_id']=session('id');
