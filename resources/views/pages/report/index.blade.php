@@ -48,8 +48,8 @@
                                 <div class="col-3">
                                     <select class="form-control" name="offer" >
                                     <option value="">เลือกทั้งหมด</option>
-                                    <option value="เสนอสภามหาวิทยลัย">สภามหาวิทยาลัย</option>
-                                    <option value="เสนอมหาวิทยลัย">มหาวิทยาลัย</option>
+                                    <option value="เสนอสภามหาวิทยาลัย">สภามหาวิทยาลัย</option>
+                                    <option value="เสนอมหาวิทยาลัย">มหาวิทยาลัย</option>
                                     <option value="คณะกรรมการอื่นๆ">คณะกรรมการอื่นๆ</option>
                                     </select>
                                     <span class="text-danger form-error"></span>
@@ -99,8 +99,8 @@
                                 <div class="col-3">
                                     <select class="form-control" name="offer"  >
                                     <option value="">เลือกทั้งหมด</option>
-                                    <option value="เสนอสภามหาวิทยลัย">สภามหาวิทยาลัย</option>
-                                    <option value="เสนอมหาวิทยลัย">มหาวิทยาลัย</option>
+                                    <option value="เสนอสภามหาวิทยาลัย">สภามหาวิทยาลัย</option>
+                                    <option value="เสนอมหาวิทยาลัย">มหาวิทยาลัย</option>
                                     <option value="คณะกรรมการอื่นๆ">คณะกรรมการอื่นๆ</option>
                                     </select>
                                     <span class="text-danger form-error"></span>

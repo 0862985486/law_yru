@@ -48,8 +48,8 @@
               <div class="col-9">
               <select class="form-control form-control-solid" name="offer" required >
                   <option value="">เลือกเสนอ</option>
-                  <option value="เสนอสภามหาวิทยลัย">สภามหาวิทยาลัย</option>
-                  <option value="เสนอมหาวิทยลัย">มหาวิทยาลัย</option>
+                  <option value="เสนอสภามหาวิทยาลัย">สภามหาวิทยาลัย</option>
+                  <option value="เสนอมหาวิทยาลัย">มหาวิทยาลัย</option>
                   <option value="คณะกรรมการอื่นๆ">คณะกรรมการอื่นๆ</option>
               </select>
               </div>
@@ -125,7 +125,7 @@
             <div class="form-group row">
               <label class="col-3">วันที่ประกาศ</label>
               <div class="col-9">
-                <input class="form-control form-control-solid" name="date_out" type="date" value=""  required/>
+                <input type="date" class="form-control form-control-solid" name="date_out" value="{{ date('Y')+543 }}{{ date('-m-d') }}" required>
               </div>
             </div>
           </div>

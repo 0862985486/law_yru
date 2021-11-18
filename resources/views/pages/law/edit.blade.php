@@ -126,28 +126,11 @@
             <div class="form-group row">
               <label class="col-3">วันที่ประกาศ</label>
               <div class="col-9">
-                <input class="form-control form-control-solid" name="date_out" type="date" value="{{$law->date_out}}" />
+                <input class="form-control form-control-solid" name="date_out" type="date" value="{{$law->date_out}}" required />
               </div>
             </div>
           </div>
-          <!-- <div class="my-5">
-            <h3 class=" text-dark font-weight-bold mb-10"></h3>
-            <div class="form-group row">
-              <label class="col-3">วันที่ออก</label>
-              <div class="col-9">
-                <input class="form-control form-control-solid" name="date_out" type="date" value="{{$law->date_out}}" />
-              </div>
-            </div>
-          </div> -->
-          <!-- <div class="my-5">
-            <h3 class=" text-dark font-weight-bold mb-10"></h3>
-            <div class="form-group row">
-              <label class="col-3">วันที่เผยแพร่</label>
-              <div class="col-9">
-                <input class="form-control form-control-solid" name="date_announce" type="date" value="{{$law->date_announce}}" />
-              </div>
-            </div>
-          </div> -->
+
           <div class="my-5">
             <h3 class=" text-dark font-weight-bold mb-10"></h3>
             <div class="form-group row">

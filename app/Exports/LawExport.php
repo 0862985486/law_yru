@@ -35,7 +35,7 @@ class LawExport implements WithHeadings,WithMapping,FromCollection
             $law=DB::table('laws')
             ->join('types', 'types.t_id', '=', 'laws.type')
             ->join('stutas', 'stutas.id', '=', 'laws.stutas')
-            ->where('date_out', 'like', '%'.$this->year.'%')
+            ->where('year', 'like', $this->year)
             ->orderBy('laws.date_out', 'DESC')
             ->get();
             return $law;
@@ -44,7 +44,7 @@ class LawExport implements WithHeadings,WithMapping,FromCollection
             $law=DB::table('laws')
             ->join('types', 'types.t_id', '=', 'laws.type')
             ->join('stutas', 'stutas.id', '=', 'laws.stutas')
-            ->where('date_out', 'like', '%'.$this->year.'%')
+            ->where('year', 'like', $this->year)
             ->where('type','=',$this->type)
             ->orderBy('laws.date_out', 'DESC')
             ->get();
@@ -54,7 +54,7 @@ class LawExport implements WithHeadings,WithMapping,FromCollection
             $law=DB::table('laws')
             ->join('types', 'types.t_id', '=', 'laws.type')
             ->join('stutas', 'stutas.id', '=', 'laws.stutas')
-            ->where('date_out', 'like', '%'.$this->year.'%')
+            ->where('year', 'like', $this->year)
             ->where('offer','=',$this->offer)
             ->orderBy('laws.date_out', 'DESC')
             ->get();
@@ -64,7 +64,7 @@ class LawExport implements WithHeadings,WithMapping,FromCollection
             $law=DB::table('laws')
             ->join('types', 'types.t_id', '=', 'laws.type')
             ->join('stutas', 'stutas.id', '=', 'laws.stutas')
-            ->where('date_out', 'like', '%'.$this->year.'%')
+            ->where('year', 'like', $this->year)
             ->where('type','=',$this->type)
             ->where('offer','=',$this->offer)
             ->orderBy('laws.date_out', 'DESC')
@@ -76,7 +76,13 @@ class LawExport implements WithHeadings,WithMapping,FromCollection
 
     public function map($law): array
     {
+        $no="1";
+        foreach($law as $row){
+            $no++;
+        }
+
         return [
+            $no,
             $law->offer,
             $law->name_type,
             $law->law_name,
@@ -89,6 +95,7 @@ class LawExport implements WithHeadings,WithMapping,FromCollection
     public function headings(): array
     {
         return [
+            'ลำดับ',
             'เสนอ',
             'ประเภท',
             'เรื่อง',

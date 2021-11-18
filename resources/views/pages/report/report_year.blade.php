@@ -57,21 +57,25 @@ th,td {
        <div class="row">
         <div class="col">
 
-          <h4 style="text-align: center;">สรุปข้อมูลกฎหมาย  {{$year+543}} เสนอ : {{$offer??"ทั้งหมด"}}   ประเภท : {{$type_name??"ทุกประเภท"}}</h4>
+          <h4 style="text-align: center;">สรุปข้อมูลกฎหมาย  {{$year}} เสนอ : {{$offer??"ทั้งหมด"}}   ประเภท : {{$type_name??"ทุกประเภท"}}</h4>
 
           <table style="width:100%">
           <tr>
-          <th title="Field #2">เสนอ</th>
-          <th title="Field #3">ประเภท</th>
-          <th title="Field #4">เรื่อง</th>
-          <th title="Field #6">วันที่ประกาศ</th>
-          <th title="Field #7">สถานะ</th>
-        </tr>
+            <th title="Field #2">ลำดับ</th>
+            <th title="Field #2">เสนอ</th>
+            <th title="Field #3">ประเภท</th>
+            <th title="Field #4">เรื่อง</th>
+            <th title="Field #6">วันที่ประกาศ</th>
+            <th title="Field #7">สถานะ</th>
+          </tr>
       </thead>
       <tbody>
+                <?php
+                $no="1";
+                ?>
               @foreach ($law as $row)
               <tr>
-
+                    <td >{{$no++}}</td>
                     <td >{{$row->offer}}</td>
                     <td >{{$row->name_type}}</td>
                     <td style="text-align: left; width: 700px;">{{$row->law_name}}</td>

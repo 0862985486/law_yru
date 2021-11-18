@@ -76,7 +76,6 @@
           <th title="Field #3">ประเภท</th>
           <th title="Field #4">เรื่อง</th>
           <th title="Field #4">ปีของกฎหมาย</th>
-          <th title="Field #6">วันที่เยพแพร่</th>
           <th title="Field #6">วันที่ประกาศใช้</th>
           <th title="Field #7">สถานะ</th>
           <th title="Field #8">option</th>
@@ -89,9 +88,8 @@
 
                     <td >{{$row->offer}}</td>
                     <td >{{$row->name_type}}</td>
-                    <td >{{$row->law_name}}</td>
+                    <td  style="width:100px;">{{$row->law_name}}</td>
                     <td >{{$row->year}}</td>
-                    <td >{{$row->date_announce}}</td>
                     <td >{{$row->date_out}}</td>
                     @if($row->stutas=='1')
                         <td><h4 style="background-color:#66FF66; width: 80px;">เผยแพร่</h4></td>

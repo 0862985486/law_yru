@@ -39,7 +39,7 @@ class ReportController extends Controller
     public function store(Request $request)
     {
         $page_title = 'รายงาน';
-        $year=$request->year-"543";
+        $year=$request->year;
         $type=$request->type;
         $offer=$request->offer;
 
@@ -78,14 +78,14 @@ class ReportController extends Controller
             //dd("ว่างทั้งคู่");
             $law=DB::table('laws')
             ->join('types', 'types.t_id', '=', 'laws.type')
-            ->where('date_out', 'like', '%'.$year.'%')
+            ->where('year', 'like', $year)
             ->orderBy('laws.date_out', 'DESC')
             ->get();
         }elseif($request->type!=null && $request->offer==null ){
             //dd("ว่างเสนอ");
             $law=DB::table('laws')
             ->join('types', 'types.t_id', '=', 'laws.type')
-            ->where('date_out', 'like', '%'.$year.'%')
+            ->where('year', 'like', $year)
             ->where('type','=',$type)
             ->orderBy('laws.date_out', 'DESC')
             ->get();
@@ -93,7 +93,7 @@ class ReportController extends Controller
             //dd("ว่างประเภท");
             $law=DB::table('laws')
             ->join('types', 'types.t_id', '=', 'laws.type')
-            ->where('date_out', 'like', '%'.$year.'%')
+            ->where('year', 'like', $year)
             ->where('offer','=',$offer)
             ->orderBy('laws.date_out', 'DESC')
             ->get();
@@ -101,7 +101,7 @@ class ReportController extends Controller
             //dd("ไม่ว่าง");
             $law=DB::table('laws')
             ->join('types', 'types.t_id', '=', 'laws.type')
-            ->where('date_out', 'like', '%'.$year.'%')
+            ->where('year', 'like', $year)
             ->where('type','=',$type)
             ->where('offer','=',$offer)
             ->orderBy('laws.date_out', 'DESC')
@@ -154,7 +154,7 @@ class ReportController extends Controller
      */
     public function show(Request $request)
     {
-        $year=$request->year-"543";
+        $year=$request->year;
         $type=$request->type ;
         $offer=$request->offer;
         return Excel::download(new LawExport($year,$type,$offer), 'law.xlsx');
