@@ -125,21 +125,11 @@
             <div class="form-group row">
               <label class="col-3">วันที่ประกาศ</label>
               <div class="col-9">
-                <input type="date" class="form-control form-control-solid" name="date_out" value="{{ date('Y')+543 }}{{ date('-m-d') }}" required>
+                <input type="date" class="form-control form-control-solid" name="date_out" value="" required>
               </div>
             </div>
           </div>
 
-
-          <!-- <div class="my-5">
-            <h3 class=" text-dark font-weight-bold mb-10"></h3>
-            <div class="form-group row">
-              <label class="col-3">วันที่เผยแพร่</label>
-              <div class="col-9">
-                <input class="form-control form-control-solid" name="date_announce" type="date" value="" required />
-              </div>
-            </div>
-          </div> -->
 
           <div class="separator separator-dashed my-10"></div>
 

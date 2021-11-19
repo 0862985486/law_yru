@@ -18,15 +18,9 @@ class FRontendController extends Controller
         ->orderBy('date_out', 'desc')
         ->where('laws.deleted_at','=',null)
         ->whereBetween('stutas', ['1', '2'])
-        ->groupBy('name_id')
-        ->paginate(5,['*'],'name_page');
-                $law=DB::table('laws')
-                ->where('laws.deleted_at','=',null)
-                ->whereBetween('stutas', ['1', '2'])
-                ->orderByDesc('laws.law_id')
-                ->get();
+        ->groupBy('name_id');
 
-        return view('pages.frontend.home1',compact('page_title','name','law'));
+        return view('pages.frontend.home1',compact('page_title','name'));
     }
 
     public function constitution(Request $request)
@@ -41,15 +35,8 @@ class FRontendController extends Controller
         ->whereBetween('stutas', ['1', '2'])
         ->groupBy('name_id')
         ->paginate(5);
-        $law=DB::table('laws')
-                ->where('stutas','=','1')
-                ->where('type','=','2')
-                ->where('laws.deleted_at','=',null)
-                ->whereBetween('stutas', ['1', '2'])
-                ->orderByDesc('law_id')
-                ->get();
-            //dd($law);
-        return view('pages.frontend.home1',compact('page_title','name','law'));
+
+        return view('pages.frontend.home1',compact('page_title','name'));
     }
 
     public function enactment(Request $request)
@@ -64,15 +51,9 @@ class FRontendController extends Controller
         ->groupBy('name_id')
         ->paginate(5);
 
-        $law=DB::table('laws')
-                ->where('stutas','=','1')
-                ->where('type','=','3')
-                ->where('laws.deleted_at','=',null)
-                ->whereBetween('stutas', ['1', '2'])
-                ->orderByDesc('law_id')
-                ->get();
 
-        return view('pages.frontend.home1',compact('page_title','name','law'));
+
+        return view('pages.frontend.home1',compact('page_title','name'));
     }
 
     public function royal_enactment(Request $request)
@@ -87,14 +68,8 @@ class FRontendController extends Controller
         ->groupBy('name_id')
         ->paginate(5);
 
-        $law=DB::table('laws')
-                ->where('stutas','=','1')
-                ->where('type','=','4')
-                ->where('laws.deleted_at','=',null)
-                ->whereBetween('stutas', ['1', '2'])
-                ->get();
 
-        return view('pages.frontend.home1',compact('page_title','name','law'));
+        return view('pages.frontend.home1',compact('page_title','name'));
     }
 
     public function decree(Request $request)
@@ -109,14 +84,9 @@ class FRontendController extends Controller
         ->groupBy('name_id')
         ->paginate(5);
 
-        $law=DB::table('laws')
-                ->where('stutas','=','1')
-                ->where('type','=','5')
-                ->where('laws.deleted_at','=',null)
-                ->whereBetween('stutas', ['1', '2'])
-                ->get();
 
-        return view('pages.frontend.home1',compact('page_title','name','law'));
+
+        return view('pages.frontend.home1',compact('page_title','name'));
     }
 
     public function ministry(Request $request)
@@ -131,14 +101,9 @@ class FRontendController extends Controller
         ->groupBy('name_id')
         ->paginate(5);
 
-        $law=DB::table('laws')
-                ->where('stutas','=','1')
-                ->where('type','=','6')
-                ->where('laws.deleted_at','=',null)
-                ->whereBetween('stutas', ['1', '2'])
-                ->get();
 
-        return view('pages.frontend.home1',compact('page_title','name','law'));
+
+        return view('pages.frontend.home1',compact('page_title','name'));
     }
 
     public function regularity(Request $request)
@@ -153,15 +118,10 @@ class FRontendController extends Controller
         ->groupBy('name_id')
         ->paginate(5);
 
-        $law=DB::table('laws')
-                ->where('stutas','=','1')
-                ->where('type','=','7')
-                ->where('laws.deleted_at','=',null)
-                ->whereBetween('stutas', ['1', '2'])
-                ->get();
 
 
-        return view('pages.frontend.home1',compact('page_title','name','law'));
+
+        return view('pages.frontend.home1',compact('page_title','name'));
     }
 
     public function rules(Request $request)
@@ -176,14 +136,9 @@ class FRontendController extends Controller
         ->groupBy('name_id')
         ->paginate(5);
 
-        $law=DB::table('laws')
-                ->where('stutas','=','1')
-                ->where('type','=','8')
-                ->where('laws.deleted_at','=',null)
-                ->whereBetween('stutas', ['1', '2'])
-                ->get();
 
-        return view('pages.frontend.home1',compact('page_title','name','law'));
+
+        return view('pages.frontend.home1',compact('page_title','name'));
     }
 
     public function declare(Request $request)
@@ -198,14 +153,9 @@ class FRontendController extends Controller
         ->groupBy('name_id')
         ->paginate(5);
 
-        $law=DB::table('laws')
-                ->where('stutas','=','1')
-                ->where('type','=','9')
-                ->where('laws.deleted_at','=',null)
-                ->whereBetween('stutas', ['1', '2'])
-                ->get();
 
-        return view('pages.frontend.home1',compact('page_title','name','law'));
+
+        return view('pages.frontend.home1',compact('page_title','name'));
     }
 
     public function dictation(Request $request)
@@ -220,13 +170,22 @@ class FRontendController extends Controller
         ->groupBy('name_id')
         ->paginate(5);
 
-        $law=DB::table('laws')
-                ->where('stutas','=','1')
-                ->where('type','=','1')
-                ->where('laws.deleted_at','=',null)
-                ->whereBetween('stutas', ['1', '2'])
-                ->get();
-
-        return view('pages.frontend.home1',compact('page_title','name','law'));
+        return view('pages.frontend.home1',compact('page_title','name'));
     }
+
+    public function announcement(Request $request)
+    {
+        $page_title = 'ประกาศกระทรวง';
+        $name=DB::table('laws')
+        ->select('name_id',DB::raw('max(date_out) as date_out'))
+        ->orderBy('date_out', 'desc')
+        ->where('type','=','10')
+        ->where('laws.deleted_at','=',null)
+        ->whereBetween('stutas', ['1', '2'])
+        ->groupBy('name_id')
+        ->paginate(5);
+
+        return view('pages.frontend.home1',compact('page_title','name'));
+    }
+
 }

@@ -48,8 +48,8 @@ Route::get('/regularity','FRontendController@regularity');
 Route::get('/rules','FRontendController@rules');
 Route::get('/declare','FRontendController@declare');
 Route::get('/dictation','FRontendController@dictation');
-Route::get('/live_search', 'AjaxPaginationController@index');
-Route::get('/search', 'LiveSearch@action')->name('live_search.action');
+Route::get('/announcement','FRontendController@announcement');
+
 Route::get('/test', function(){
     return View('pages.frontend.test');
  });

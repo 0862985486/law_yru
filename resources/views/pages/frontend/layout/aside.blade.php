@@ -1,3 +1,6 @@
+<?php
+use Illuminate\Support\Facades\DB;
+?>
         <div class="col-md-3">
 
             <div class="border-end bg-white" id="sidebar-wrapper">
@@ -8,6 +11,7 @@
                         <a class="list-group-item list-group-item-action list-group-item-light p-3" style="color:black; font-size:17px;" href="/royal_enactment">พระราชกำหนด</a>
                         <a class="list-group-item list-group-item-action list-group-item-light p-3" style="color:black; font-size:17px;" href="/decree">พระราชกฤษฎีกา</a>
                         <a class="list-group-item list-group-item-action list-group-item-light p-3" style="color:black; font-size:17px;" href="/ministry">กฎกระทรวง</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" style="color:black; font-size:17px;" href="/announcement">ประกาศกระทรวง</a>
                         <a class="list-group-item list-group-item-action list-group-item-light p-3" style="color:black; font-size:17px;" href="/regularity">ระเบียบ</a>
                         <a class="list-group-item list-group-item-action list-group-item-light p-3" style="color:black; font-size:17px;" href="/rules">ข้อบังคับ</a>
                         <a class="list-group-item list-group-item-action list-group-item-light p-3" style="color:black; font-size:17px;" href="/declare">ประกาศ</a>
